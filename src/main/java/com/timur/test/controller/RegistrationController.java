@@ -15,7 +15,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/rest/registration")
-@Api(value = "User Resource REST Endpoint", description = "Shows the registration info")
+@Api(value = "User Registration Endpoint", description = "Shows the registration info")
 public class RegistrationController {
 
     @Autowired
@@ -24,11 +24,6 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String registration() {
         return "registration";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
     }
 
     @ApiOperation(value = "Returns User's values")

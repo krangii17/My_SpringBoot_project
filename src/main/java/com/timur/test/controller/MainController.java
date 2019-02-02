@@ -25,5 +25,11 @@ public class MainController {
     public String greeting() {
         return "main";
     }
+
+    @ApiOperation(value = "Login user")
+    public String addViewControllers() {
+        //registry.addViewController("/login").setViewName("login");
+        return "Good";
+    }
 }
 

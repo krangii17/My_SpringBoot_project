@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/rest/userInfo")
-@Api(value = "User Resource REST Endpoint", description = "Shows the user info")
+@Api(value = "User info Endpoint", description = "Shows the user info")
 public class UserInfoController {
 
     @GetMapping("/userAccountInfo")
