@@ -1,9 +1,11 @@
 package com.timur.test.domain;
 
+
+
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Role  implements GrantedAuthority {
-    USER,ANONYMOUS;
+    USER,ADMIN;
 
     @Override
     public String getAuthority() {
