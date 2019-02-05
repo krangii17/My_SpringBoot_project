@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 @Service
-public class UserService  implements UserDetailsService {
+public class UserService {
     @Autowired
     private UserRepo userRepo;
 
@@ -30,8 +30,4 @@ public class UserService  implements UserDetailsService {
         userRepo.save(user);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByUsername(username);
-    }
 }

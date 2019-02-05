@@ -92,8 +92,8 @@
     <schema id="18" parent="2" name="public">
       <ObjectId>41003</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2019-01-31.22:19:57.854</IntrospectionTimestamp>
-      <IntrospectionStateNumber>3212</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-02-05.13:31:13.322</IntrospectionTimestamp>
+      <IntrospectionStateNumber>3992</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -140,208 +140,172 @@
       <Type>index</Type>
     </access-method>
     <sequence id="25" parent="18" name="hibernate_sequence">
-      <ObjectId>50684</ObjectId>
+      <ObjectId>60169</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3209</StateNumber>
+      <StateNumber>3985</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="26" parent="18" name="flyway_schema_history">
-      <ObjectId>41004</ObjectId>
+    <table id="26" parent="18" name="comment">
+      <ObjectId>60171</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2089</StateNumber>
+      <StateNumber>3990</StateNumber>
     </table>
     <table id="27" parent="18" name="message">
-      <ObjectId>42979</ObjectId>
+      <ObjectId>60176</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3044</StateNumber>
+      <StateNumber>3990</StateNumber>
     </table>
     <table id="28" parent="18" name="user_role">
-      <ObjectId>50686</ObjectId>
+      <ObjectId>60181</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3212</StateNumber>
+      <StateNumber>3992</StateNumber>
     </table>
     <table id="29" parent="18" name="usr">
-      <ObjectId>50689</ObjectId>
+      <ObjectId>60184</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3212</StateNumber>
+      <StateNumber>3991</StateNumber>
     </table>
-    <column id="30" parent="26" name="installed_rank">
+    <column id="30" parent="26" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
+      <StateNumber>3986</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="31" parent="26" name="version">
+    <column id="31" parent="26" name="text">
       <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <StateNumber>2089</StateNumber>
+      <DataType>varchar(248)|0s</DataType>
+      <StateNumber>3986</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="32" parent="26" name="description">
+    <column id="32" parent="26" name="message_id">
       <Position>3</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="33" parent="26" name="type">
-      <Position>4</Position>
-      <DataType>varchar(20)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="34" parent="26" name="script">
-      <Position>5</Position>
-      <DataType>varchar(1000)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="35" parent="26" name="checksum">
-      <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>2089</StateNumber>
+      <StateNumber>3986</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="36" parent="26" name="installed_by">
-      <Position>7</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="37" parent="26" name="installed_on">
-      <Position>8</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
-      <DefaultExpression>now()</DefaultExpression>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="38" parent="26" name="execution_time">
-      <Position>9</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="39" parent="26" name="success">
-      <Position>10</Position>
-      <DataType>boolean|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2089</StateNumber>
-      <TypeId>16</TypeId>
-    </column>
-    <index id="40" parent="26" name="flyway_schema_history_pk">
-      <ObjectId>41011</ObjectId>
-      <ColNames>installed_rank</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="41" parent="26" name="flyway_schema_history_s_idx">
-      <ObjectId>41013</ObjectId>
-      <ColNames>success</ColNames>
-    </index>
-    <key id="42" parent="26" name="flyway_schema_history_pk">
-      <ObjectId>41012</ObjectId>
-      <ColNames>installed_rank</ColNames>
-      <UnderlyingIndexName>flyway_schema_history_pk</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="43" parent="27" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>3041</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="44" parent="27" name="tag">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3041</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="45" parent="27" name="text">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3041</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="46" parent="27" name="user_id">
-      <Position>4</Position>
-      <DataType>bigint|0s</DataType>
-      <StateNumber>3041</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <index id="47" parent="27" name="message_pkey">
-      <ObjectId>42985</ObjectId>
+    <index id="33" parent="26" name="comment_pkey">
+      <ObjectId>60174</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="48" parent="27" name="message_pkey">
-      <ObjectId>42986</ObjectId>
+    <key id="34" parent="26" name="comment_pkey">
+      <ObjectId>60175</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>comment_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="26" name="fkatlrxw2dnvma9h401t2ql2ri8">
+      <ObjectId>60192</ObjectId>
+      <ColNames>message_id</ColNames>
+      <RefTableId>60176</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>message</RefTableName>
+      <RefKeyName>message_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="36" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3987</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="37" parent="27" name="tag">
+      <Position>2</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <StateNumber>3987</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="38" parent="27" name="text">
+      <Position>3</Position>
+      <DataType>varchar(248)|0s</DataType>
+      <StateNumber>3987</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="39" parent="27" name="user_id">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>3987</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="40" parent="27" name="message_pkey">
+      <ObjectId>60179</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="27" name="message_pkey">
+      <ObjectId>60180</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>message_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="49" parent="28" name="user_id">
-      <Position>1</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>3210</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="50" parent="28" name="roles">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3210</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <foreign-key id="51" parent="28" name="fkfpm8swft53ulq2hl11yplpr5">
-      <ObjectId>50697</ObjectId>
+    <foreign-key id="42" parent="27" name="fk70bv6o4exfe3fbrho7nuotopf">
+      <ObjectId>60197</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>50689</RefTableId>
+      <RefTableId>60184</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>usr</RefTableName>
       <RefKeyName>usr_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="52" parent="29" name="id">
+    <column id="43" parent="28" name="user_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3211</StateNumber>
+      <StateNumber>3988</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="53" parent="29" name="active">
+    <column id="44" parent="28" name="roles">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>3988</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="45" parent="28" name="fkfpm8swft53ulq2hl11yplpr5">
+      <ObjectId>60202</ObjectId>
+      <ColNames>user_id</ColNames>
+      <RefTableId>60184</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usr</RefTableName>
+      <RefKeyName>usr_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="46" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3989</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="47" parent="29" name="active">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3211</StateNumber>
+      <StateNumber>3989</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <column id="54" parent="29" name="password">
+    <column id="48" parent="29" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3211</StateNumber>
+      <StateNumber>3989</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="55" parent="29" name="username">
+    <column id="49" parent="29" name="username">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3211</StateNumber>
+      <StateNumber>3989</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="56" parent="29" name="usr_pkey">
-      <ObjectId>50695</ObjectId>
+    <index id="50" parent="29" name="usr_pkey">
+      <ObjectId>60190</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="57" parent="29" name="usr_pkey">
-      <ObjectId>50696</ObjectId>
+    <key id="51" parent="29" name="usr_pkey">
+      <ObjectId>60191</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
