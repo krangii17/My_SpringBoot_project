@@ -1,15 +1,14 @@
 package com.timur.test.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "usr")
-public class User{
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ApiModelProperty(notes = "User id")
@@ -89,4 +88,32 @@ public class User{
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", active=" + active +
+                ", roles=" + roles +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return isActive() == user.isActive() &&
+                Objects.equals(getId(), user.getId()) &&
+                Objects.equals(getUsername(), user.getUsername()) &&
+                Objects.equals(getPassword(), user.getPassword()) &&
+                Objects.equals(getRoles(), user.getRoles()) &&
+                Objects.equals(getMessages(), user.getMessages());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getUsername(), getPassword(), isActive(), getRoles(), getMessages());
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.timur.test.config;
 
+import com.timur.test.domain.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,18 +28,17 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableWebSecurity
 public class ApplicationConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    DataSource dataSource;
-
     private static final String[] AUTH_WHITELIST = {
             "/",
-            "/guest/**",
+            "/all/**",
             // -- swagger ui
             "/swagger-resources/**",
             "/swagger-ui.html",
             "/v2/api-docs",
             "/webjars/**",
     };
+    @Autowired
+    DataSource dataSource;
     @Autowired
     private BasicAuthenticationPoint basicAuthenticationPoint;
 
@@ -47,7 +47,7 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.timur.test"))
-                .paths(regex("/rest.*"))
+                .paths(regex("/*.*"))
                 .build()
                 .apiInfo(getApiInfo());
     }
@@ -57,6 +57,7 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers("/user/**").hasAnyRole(String.valueOf(Role.ADMIN), String.valueOf(Role.USER))
                 .anyRequest().authenticated();
 
         http.httpBasic().authenticationEntryPoint(basicAuthenticationPoint);

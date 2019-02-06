@@ -7,8 +7,8 @@ import javax.persistence.*;
 @Entity
 public class Comment {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Length(max = 248, message = "Comment should be less than 248 symbols")
     private String text;
@@ -17,18 +17,23 @@ public class Comment {
     @JoinColumn(name = "message_id")
     private Message mess;
 
-    public Comment(){ }
+    public Comment() {
+    }
+
+    public Comment(@Length(max = 248, message = "Comment should be less than 248 symbols") String text) {
+        this.text = text;
+    }
 
     public Comment(@Length(max = 248, message = "Comment should be less than 248 symbols") String text, Message mess) {
         this.text = text;
         this.mess = mess;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

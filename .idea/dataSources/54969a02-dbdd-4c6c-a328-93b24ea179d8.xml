@@ -92,8 +92,8 @@
     <schema id="18" parent="2" name="public">
       <ObjectId>41003</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2019-02-05.13:31:13.322</IntrospectionTimestamp>
-      <IntrospectionStateNumber>3992</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-02-06.19:32:20.415</IntrospectionTimestamp>
+      <IntrospectionStateNumber>4425</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -140,67 +140,67 @@
       <Type>index</Type>
     </access-method>
     <sequence id="25" parent="18" name="hibernate_sequence">
-      <ObjectId>60169</ObjectId>
+      <ObjectId>67556</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3985</StateNumber>
+      <StateNumber>4418</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <table id="26" parent="18" name="comment">
-      <ObjectId>60171</ObjectId>
+      <ObjectId>67558</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3990</StateNumber>
+      <StateNumber>4423</StateNumber>
     </table>
     <table id="27" parent="18" name="message">
-      <ObjectId>60176</ObjectId>
+      <ObjectId>67563</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3990</StateNumber>
+      <StateNumber>4423</StateNumber>
     </table>
     <table id="28" parent="18" name="user_role">
-      <ObjectId>60181</ObjectId>
+      <ObjectId>67568</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3992</StateNumber>
+      <StateNumber>4425</StateNumber>
     </table>
     <table id="29" parent="18" name="usr">
-      <ObjectId>60184</ObjectId>
+      <ObjectId>67571</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>3991</StateNumber>
+      <StateNumber>4424</StateNumber>
     </table>
     <column id="30" parent="26" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3986</StateNumber>
+      <StateNumber>4419</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="31" parent="26" name="text">
       <Position>2</Position>
       <DataType>varchar(248)|0s</DataType>
-      <StateNumber>3986</StateNumber>
+      <StateNumber>4419</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="32" parent="26" name="message_id">
       <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>3986</StateNumber>
-      <TypeId>23</TypeId>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>4419</StateNumber>
+      <TypeId>20</TypeId>
     </column>
     <index id="33" parent="26" name="comment_pkey">
-      <ObjectId>60174</ObjectId>
+      <ObjectId>67561</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="34" parent="26" name="comment_pkey">
-      <ObjectId>60175</ObjectId>
+      <ObjectId>67562</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>comment_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="35" parent="26" name="fkatlrxw2dnvma9h401t2ql2ri8">
-      <ObjectId>60192</ObjectId>
+      <ObjectId>67579</ObjectId>
       <ColNames>message_id</ColNames>
-      <RefTableId>60176</RefTableId>
+      <RefTableId>67563</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>message</RefTableName>
       <RefKeyName>message_pkey</RefKeyName>
@@ -208,44 +208,44 @@
     </foreign-key>
     <column id="36" parent="27" name="id">
       <Position>1</Position>
-      <DataType>integer|0s</DataType>
+      <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3987</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>4420</StateNumber>
+      <TypeId>20</TypeId>
     </column>
     <column id="37" parent="27" name="tag">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
-      <StateNumber>3987</StateNumber>
+      <StateNumber>4420</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="38" parent="27" name="text">
       <Position>3</Position>
       <DataType>varchar(248)|0s</DataType>
-      <StateNumber>3987</StateNumber>
+      <StateNumber>4420</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="39" parent="27" name="user_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>3987</StateNumber>
+      <StateNumber>4420</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <index id="40" parent="27" name="message_pkey">
-      <ObjectId>60179</ObjectId>
+      <ObjectId>67566</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="41" parent="27" name="message_pkey">
-      <ObjectId>60180</ObjectId>
+      <ObjectId>67567</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>message_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="42" parent="27" name="fk70bv6o4exfe3fbrho7nuotopf">
-      <ObjectId>60197</ObjectId>
+      <ObjectId>67584</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>60184</RefTableId>
+      <RefTableId>67571</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>usr</RefTableName>
       <RefKeyName>usr_pkey</RefKeyName>
@@ -255,19 +255,19 @@
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3988</StateNumber>
+      <StateNumber>4421</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="44" parent="28" name="roles">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3988</StateNumber>
+      <StateNumber>4421</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="45" parent="28" name="fkfpm8swft53ulq2hl11yplpr5">
-      <ObjectId>60202</ObjectId>
+      <ObjectId>67589</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>60184</RefTableId>
+      <RefTableId>67571</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>usr</RefTableName>
       <RefKeyName>usr_pkey</RefKeyName>
@@ -277,35 +277,35 @@
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3989</StateNumber>
+      <StateNumber>4422</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="47" parent="29" name="active">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3989</StateNumber>
+      <StateNumber>4422</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="48" parent="29" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3989</StateNumber>
+      <StateNumber>4422</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="49" parent="29" name="username">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>3989</StateNumber>
+      <StateNumber>4422</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="50" parent="29" name="usr_pkey">
-      <ObjectId>60190</ObjectId>
+      <ObjectId>67577</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="51" parent="29" name="usr_pkey">
-      <ObjectId>60191</ObjectId>
+      <ObjectId>67578</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>
       <Primary>1</Primary>

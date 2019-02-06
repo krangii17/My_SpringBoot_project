@@ -8,8 +8,8 @@ import java.util.Set;
 @Entity
 public class Message {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Length(max = 248, message = "Message should be less than 248 symbols")
     private String text;
@@ -25,6 +25,11 @@ public class Message {
     private Set<Comment> comments;
 
     public Message() {
+    }
+
+    public Message(@Length(max = 248, message = "Message should be less than 248 symbols") String text, @Length(max = 40, message = "Tag should be less than 40 symbols") String tag) {
+        this.text = text;
+        this.tag = tag;
     }
 
     public Message(String text, String tag, User user) {
@@ -45,19 +50,19 @@ public class Message {
         this.author = author;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public String getText() {
         return text;
     }
 
-    public Integer getId() {
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
