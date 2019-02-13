@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,39 +21,40 @@ public class UserController {
     private UserService userService;
 
     @ApiOperation(value = "Returns User's values")
-    @PostMapping("/registration")
-    public HttpEntity<?> addUser(User user) {
+    @PostMapping(value = "/registration",produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public HttpEntity<?> addUser(@RequestBody User user) {
         boolean isExist = userService.isExistUserInDB(user.getUsername());
         if (!isExist) {
             return ResponseEntity.EMPTY;
         }
-        userService.saveUser(user);
-        return ResponseEntity.ok("User has been registered correctly");
+        User savedUser = userService.saveUser(user);
+        return ResponseEntity.ok(savedUser);
     }
 
     @ApiOperation(value = "Change User's password")
-    @PutMapping("/changePassword")
-    public HttpEntity<?> changePassword(@RequestParam(required = true) String userName,
-                                        @RequestParam(required = true) String password) {
+    @PutMapping(value = "/changePassword",produces = MediaType.APPLICATION_JSON_VALUE)
+    public HttpEntity<?> changePassword(@RequestBody String userName,
+                                        @RequestBody String password) {
         boolean isExist = userService.isExistUserInDB(userName);
         if (isExist) {
             return ResponseEntity.EMPTY;
         }
         User user = userService.getUserByUserName(userName);
-        userService.changePassword(user, password);
-        return ResponseEntity.ok("Password has been changed successfully");
+        return ResponseEntity.ok(userService.changePassword(user, password));
     }
 
     @ApiOperation(value = "Get User's data by id")
-    @GetMapping("/userAccountInfo")
-    public String getUserAccount(@RequestParam(required = true) Long id) {
+    @GetMapping(value = "/userAccountInfo" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public User getUserAccount(@RequestBody Long id) {
         Optional<User> user = userService.getUser(id);
-        return user.map(Object::toString).orElse("{}");
+        return user.orElse(null);
     }
 
     @ApiOperation(value = "Delete User's data by id")
     @DeleteMapping("/delete")
-    public HttpEntity<?> deleteAccount(@RequestParam(required = true) Long id, String userName) {
+    public HttpEntity<?> deleteAccount(@RequestBody Long id,
+                                       @RequestBody String userName) {
         boolean isExist = userService.isExistUserInDB(userName);
         if (isExist) {
             userService.deleteAccount(id);

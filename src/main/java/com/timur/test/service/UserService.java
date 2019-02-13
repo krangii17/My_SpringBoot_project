@@ -26,10 +26,11 @@ public class UserService {
         return userRepo.findByUsername(userName);
     }
 
-    public void saveUser(User user) {
+    public User saveUser(User user) {
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
+        return user;
     }
 
     public Optional<User> getUser(Long id) {
@@ -37,9 +38,9 @@ public class UserService {
         return user;
     }
 
-    public void changePassword(User user, String password) {
+    public User changePassword(User user, String password) {
         user.setPassword(password);
-        userRepo.save(user);
+        return userRepo.save(user);
     }
 
     public void deleteAccount(Long id) {

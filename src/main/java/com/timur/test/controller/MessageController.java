@@ -21,14 +21,14 @@ public class MessageController {
 
     @ApiOperation(value = "Send message")
     @PostMapping("/sendMessage")
-    public HttpEntity<?> addMessage(Message message) {
+    public HttpEntity<?> addMessage(@RequestBody Message message) {
         messageService.saveMessage(message);
         return ResponseEntity.ok("Message has been sent");
     }
 
     @ApiOperation(value = "Delete message by id")
     @DeleteMapping("/deleteMessage")
-    public HttpEntity<?> deleteMessage(@RequestParam(required = true) Long id) {
+    public HttpEntity<?> deleteMessage(@RequestBody Long id) {
         boolean isExist = messageService.isExistMessageInDb(id);
         if (isExist) {
             messageService.deleteMessage(id);
@@ -39,8 +39,8 @@ public class MessageController {
 
     @ApiOperation(value = "Change message")
     @PutMapping("/changeMessage")
-    public HttpEntity<?> changeMessage(@RequestParam(required = true) Long id,
-                                       @RequestParam(required = true) String message) {
+    public HttpEntity<?> changeMessage(@RequestBody Long id,
+                                       @RequestBody String message) {
         boolean isExist = messageService.isExistMessageInDb(id);
         if (!isExist) {
             return ResponseEntity.EMPTY;

@@ -90,15 +90,6 @@ public class User {
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", active=" + active +
-                ", roles=" + roles +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
@@ -116,4 +107,15 @@ public class User {
         return Objects.hash(getId(), getUsername(), getPassword(), isActive(), getRoles(), getMessages());
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", roles=" + roles +
+                ", messages=" + messages +
+                '}';
+    }
 }

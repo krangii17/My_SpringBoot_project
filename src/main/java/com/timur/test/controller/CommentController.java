@@ -20,14 +20,14 @@ public class CommentController {
 
     @ApiOperation(value = "Send comment")
     @PostMapping("/sendComment")
-    public HttpEntity<?> addComment(Comment comment) {
+    public HttpEntity<?> addComment(@RequestBody Comment comment) {
         commentService.saveComment(comment);
         return ResponseEntity.ok("Comment has been sent");
     }
 
     @ApiOperation(value = "Delete comment by id")
     @DeleteMapping("/deleteComment")
-    public HttpEntity<?> deleteComment(@RequestParam(required = true) Long id) {
+    public HttpEntity<?> deleteComment(@RequestBody Long id) {
         boolean isExist = commentService.isExistCommentInDb(id);
         if (isExist) {
             commentService.deleteComment(id);
@@ -38,8 +38,8 @@ public class CommentController {
 
     @ApiOperation(value = "Change comment")
     @PutMapping("/changeComment")
-    public HttpEntity<?> changeComment(@RequestParam(required = true) Long id,
-                                       @RequestParam(required = true) String comment) {
+    public HttpEntity<?> changeComment(@RequestBody Long id,
+                                       @RequestBody String comment) {
         boolean isExist = commentService.isExistCommentInDb(id);
         if (!isExist) {
             return ResponseEntity.EMPTY;
