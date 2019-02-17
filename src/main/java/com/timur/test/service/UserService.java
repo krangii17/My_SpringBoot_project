@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,12 +15,17 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    public boolean isExistUserInDB(String userName) {
+    public boolean isExistUserInDBByUserName(String userName) {
         User userFromDb = userRepo.findByUsername(userName);
         if (userFromDb != null) {
             return false;
         }
         return true;
+    }
+
+    public boolean isExistUserInDBByID(Long id) {
+        Optional<User> userFromDb = userRepo.findById(id);
+        return !userFromDb.isPresent();
     }
 
     public User getUserByUserName(String userName) {
@@ -33,14 +39,18 @@ public class UserService {
         return user;
     }
 
-    public Optional<User> getUser(Long id) {
+    public User getUser(Long id) {
         Optional<User> user = userRepo.findById(id);
-        return user;
+        return user.orElse(null);
     }
 
     public User changePassword(User user, String password) {
         user.setPassword(password);
         return userRepo.save(user);
+    }
+
+    public List<User> getUsers() {
+        return userRepo.findAll();
     }
 
     public void deleteAccount(Long id) {

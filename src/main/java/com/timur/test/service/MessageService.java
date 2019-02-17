@@ -16,8 +16,9 @@ public class MessageService {
         return messageRepo.existsById(id);
     }
 
-    public void saveMessage(Message message) {
+    public Message saveMessage(Message message) {
         messageRepo.save(message);
+        return message;
     }
 
     public void changeMessage(Message message, String text) {

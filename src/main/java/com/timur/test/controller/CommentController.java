@@ -20,29 +20,29 @@ public class CommentController {
 
     @ApiOperation(value = "Send comment")
     @PostMapping("/sendComment")
-    public HttpEntity<?> addComment(@RequestBody Comment comment) {
+    public ResponseEntity<?> addComment(@RequestBody Comment comment) {
         commentService.saveComment(comment);
         return ResponseEntity.ok("Comment has been sent");
     }
 
     @ApiOperation(value = "Delete comment by id")
     @DeleteMapping("/deleteComment")
-    public HttpEntity<?> deleteComment(@RequestBody Long id) {
+    public ResponseEntity<?> deleteComment(@RequestBody Long id) {
         boolean isExist = commentService.isExistCommentInDb(id);
         if (isExist) {
             commentService.deleteComment(id);
             return ResponseEntity.ok("Comment has been deleted successfully");
         }
-        return ResponseEntity.EMPTY;
+        return ResponseEntity.notFound().build();
     }
 
     @ApiOperation(value = "Change comment")
     @PutMapping("/changeComment")
-    public HttpEntity<?> changeComment(@RequestBody Long id,
+    public ResponseEntity<?> changeComment(@RequestBody Long id,
                                        @RequestBody String comment) {
         boolean isExist = commentService.isExistCommentInDb(id);
         if (!isExist) {
-            return ResponseEntity.EMPTY;
+            return ResponseEntity.notFound().build();
         }
         Optional<Comment> optionalComment = commentService.getComment(id);
         commentService.changeComment(optionalComment.get(), comment);

@@ -1,7 +1,6 @@
 package com.timur.test.config;
 
 import com.timur.test.domain.Role;
-import com.timur.test.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -61,7 +59,9 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+
         http.cors();
+
         http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/user/**").hasAnyRole(String.valueOf(Role.ADMIN), String.valueOf(Role.USER))
                 .anyRequest().authenticated();

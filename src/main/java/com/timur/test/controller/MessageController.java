@@ -1,6 +1,7 @@
 package com.timur.test.controller;
 
 import com.timur.test.domain.Message;
+import com.timur.test.domain.User;
 import com.timur.test.service.MessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,29 +22,31 @@ public class MessageController {
 
     @ApiOperation(value = "Send message")
     @PostMapping("/sendMessage")
-    public HttpEntity<?> addMessage(@RequestBody Message message) {
-        messageService.saveMessage(message);
-        return ResponseEntity.ok("Message has been sent");
+    public ResponseEntity<?> addMessage(@RequestBody Message message) {
+        return Optional
+                .ofNullable(messageService.saveMessage(message))
+                .map(user -> ResponseEntity.ok().body(user))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @ApiOperation(value = "Delete message by id")
     @DeleteMapping("/deleteMessage")
-    public HttpEntity<?> deleteMessage(@RequestBody Long id) {
+    public ResponseEntity<?> deleteMessage(@RequestBody Long id) {
         boolean isExist = messageService.isExistMessageInDb(id);
         if (isExist) {
             messageService.deleteMessage(id);
             return ResponseEntity.ok("Message has been deleted successfully");
         }
-        return ResponseEntity.EMPTY;
+        return ResponseEntity.notFound().build();
     }
 
     @ApiOperation(value = "Change message")
     @PutMapping("/changeMessage")
-    public HttpEntity<?> changeMessage(@RequestBody Long id,
+    public ResponseEntity<?> changeMessage(@RequestBody Long id,
                                        @RequestBody String message) {
         boolean isExist = messageService.isExistMessageInDb(id);
         if (!isExist) {
-            return ResponseEntity.EMPTY;
+            return ResponseEntity.notFound().build();
         }
         Optional<Message> optionalMessage = messageService.getMessage(id);
         messageService.changeMessage(optionalMessage.get(), message);
