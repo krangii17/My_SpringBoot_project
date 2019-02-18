@@ -5,7 +5,6 @@ import com.timur.test.service.CommentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +38,7 @@ public class CommentController {
     @ApiOperation(value = "Change comment")
     @PutMapping("/changeComment")
     public ResponseEntity<?> changeComment(@RequestBody Long id,
-                                       @RequestBody String comment) {
+                                           @RequestBody String comment) {
         boolean isExist = commentService.isExistCommentInDb(id);
         if (!isExist) {
             return ResponseEntity.notFound().build();

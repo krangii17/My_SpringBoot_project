@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
@@ -82,6 +81,24 @@ public class UserControllerTest {
     }
 
     @Test
-    public void getAllUsers() {
+    public void getExistAllUsers() throws Exception {
+        //GIVEN
+        String expectedResponse = "[{\"id\":1,\"username\":\"Boris\"," +
+                "\"password\":\"1999\",\"active\":true,\"roles\":[],\"messages\":[]}," +
+                "{\"id\":2,\"username\":\"Victor\",\"password\":\"2000\"," +
+                "\"active\":true,\"roles\":[],\"messages\":[]}]";
+        String uri = "/user/usersAccounts";
+        int expectedStatus = 200;
+        //WHEN
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+                .andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        String result = mvcResult.getResponse().getContentAsString();
+        String actualResponse = mvcResult.getResponse().getContentAsString();
+        //THEN
+        assertEquals(actualResponse, expectedResponse);
+        assertEquals(expectedStatus, status);
+        assertNotNull(result);
     }
 }

@@ -1,12 +1,10 @@
 package com.timur.test.controller;
 
 import com.timur.test.domain.Message;
-import com.timur.test.domain.User;
 import com.timur.test.service.MessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +41,7 @@ public class MessageController {
     @ApiOperation(value = "Change message")
     @PutMapping("/changeMessage")
     public ResponseEntity<?> changeMessage(@RequestBody Long id,
-                                       @RequestBody String message) {
+                                           @RequestBody String message) {
         boolean isExist = messageService.isExistMessageInDb(id);
         if (!isExist) {
             return ResponseEntity.notFound().build();
