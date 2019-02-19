@@ -18,6 +18,15 @@ public class MessageController {
     @Autowired
     MessageService messageService;
 
+    @ApiOperation(value = "Get all messages")
+    @GetMapping("/getMessages")
+    public ResponseEntity<?> getMessages(){
+        return Optional
+                .ofNullable(messageService.getMessages())
+                .map(user -> ResponseEntity.ok().body(user))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @ApiOperation(value = "Send message")
     @PostMapping("/sendMessage")
     public ResponseEntity<?> addMessage(@RequestBody Message message) {

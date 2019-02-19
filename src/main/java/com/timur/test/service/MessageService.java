@@ -5,6 +5,7 @@ import com.timur.test.repository.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,6 +15,10 @@ public class MessageService {
 
     public boolean isExistMessageInDb(Long id) {
         return messageRepo.existsById(id);
+    }
+
+    public List<Message> getMessages(){
+        return messageRepo.findAll();
     }
 
     public Message saveMessage(Message message) {
